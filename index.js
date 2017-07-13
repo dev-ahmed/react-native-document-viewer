@@ -28,6 +28,12 @@ export default class RNDocumentViewer extends Component {
         this.pdf = null;
     }
 
+    componentWillMount() {
+        this.setState({
+            visible: this.props.visible
+        })
+    }
+
     componentWillReceiveProps(nextProps) {
         this.setState({
             visible: nextProps.visible
@@ -70,8 +76,9 @@ export default class RNDocumentViewer extends Component {
 
     close = () => {
         let { context } = this.props;
+        console.log(context);
         context.setState({
-            showDocument: false
+            visible: false
         });
 
     }
@@ -82,7 +89,7 @@ export default class RNDocumentViewer extends Component {
         let source = { uri: pdfSource };
         
         return (
-            <View style={{ flex: 1, backgroundColor: 'white' }}>
+            <Modal style={{ flex: 1, backgroundColor: 'white' }} visible={visible}>
                 <View style={styles.pdfHeaderBar}>
                     <View style={styles.leftControls}>
                         <TouchableOpacity style={styles.btn} onPress={() => this.close()}>
@@ -143,7 +150,7 @@ export default class RNDocumentViewer extends Component {
                         console.log(error);
                     }}
                     style={styles.pdf} />
-            </View>
+            </Modal>
         )
     }
 

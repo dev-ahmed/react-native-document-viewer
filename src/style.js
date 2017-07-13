@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
         backgroundColor: 'black',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        // marginTop: 23,
+        marginTop: 23,
         width: Dimensions.get('window').width
     },
     leftControls: {
