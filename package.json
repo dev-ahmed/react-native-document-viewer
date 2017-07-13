@@ -1,4 +1,3 @@
-
 {
   "name": "react-native-document-viewer",
   "version": "1.0.0",
@@ -14,7 +13,12 @@
   "license": "",
   "peerDependencies": {
     "react-native": "^0.41.2",
+    "react-native-pdf": "^1.2.3",
+    "react-native-print": "^0.3.0",
     "react-native-windows": "0.41.0-rc.1"
-
+  },
+  "dependencies": {
+    "react-native-pdf": "^1.2.4",
+    "react-native-print": "^0.3.0"
   }
 }
