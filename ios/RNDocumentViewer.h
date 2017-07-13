@@ -5,7 +5,7 @@
 #import <React/RCTBridgeModule.h>
 #endif
 
-@interface RNReactNativeDocumentViewer : NSObject <RCTBridgeModule>
+@interface RNDocumentViewer : NSObject <RCTBridgeModule>
 
 @end
   

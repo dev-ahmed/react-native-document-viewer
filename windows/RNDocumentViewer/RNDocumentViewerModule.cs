@@ -4,17 +4,17 @@ using System.Collections.Generic;
 using Windows.ApplicationModel.Core;
 using Windows.UI.Core;
 
-namespace Com.Reactlibrary.RNReactNativeDocumentViewer
+namespace Com.Reactlibrary.RNDocumentViewer
 {
     /// <summary>
     /// A module that allows JS to share data.
     /// </summary>
-    class RNReactNativeDocumentViewerModule : NativeModuleBase
+    class RNDocumentViewerModule : NativeModuleBase
     {
         /// <summary>
-        /// Instantiates the <see cref="RNReactNativeDocumentViewerModule"/>.
+        /// Instantiates the <see cref="RNDocumentViewerModule"/>.
         /// </summary>
-        internal RNReactNativeDocumentViewerModule()
+        internal RNDocumentViewerModule()
         {
 
         }
@@ -26,7 +26,7 @@ namespace Com.Reactlibrary.RNReactNativeDocumentViewer
         {
             get
             {
-                return "RNReactNativeDocumentViewer";
+                return "RNDocumentViewer";
             }
         }
     }

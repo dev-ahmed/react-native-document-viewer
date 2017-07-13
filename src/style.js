@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
         backgroundColor: 'black',
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: 23,
+        // marginTop: 23,
         width: Dimensions.get('window').width
     },
     leftControls: {
@@ -35,6 +35,15 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         opacity: .6
+    },
+    arrowsIcon:{
+        width: 17,
+        height: 15,
+    },
+    btnClose:{
+        marginLeft:3,
+        width:40,
+        height:15
     },
     icon: {
         color: 'white',

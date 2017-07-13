@@ -7,8 +7,8 @@
     <ProjectGuid>{09B6E000-67B9-11E7-B15C-FFE480E1BF10}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RNReactNativeDocumentViewer</RootNamespace>
-    <AssemblyName>RNReactNativeDocumentViewer</AssemblyName>
+    <RootNamespace>RNDocumentViewer</RootNamespace>
+    <AssemblyName>RNDocumentViewer</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
@@ -112,9 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RNReactNativeDocumentViewerModule.cs" />
-    <Compile Include="RNReactNativeDocumentViewerPackage.cs" />
-    <EmbeddedResource Include="Properties\RNReactNativeDocumentViewer.rd.xml" />
+    <Compile Include="RNDocumentViewerModule.cs" />
+    <Compile Include="RNDocumentViewerPackage.cs" />
+    <EmbeddedResource Include="Properties\RNDocumentViewer.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(ReactWindowsRoot)\react-native-windows\ReactWindows\ReactNative\ReactNative.csproj">

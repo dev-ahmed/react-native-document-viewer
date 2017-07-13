@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
-import { NativeModules } from 'react-native';
-import { View } from 'react-native'
-import { RNPrint } from 'NativeModules';
+import { View , Modal , TouchableOpacity , TextInput , Icon , Image , Text } from 'react-native'
+// import {RNPrint} from 'NativeModules';
 import RNFetchBlob from 'react-native-fetch-blob';
+import Pdf from 'react-native-pdf';
 import { styles } from './src/style';
+import { NativeModules } from 'react-native';
+
+const { PDFView } = NativeModules;
 
 const
-    pageDownIcon = require('./src/images/toolbarButton-pageDown.png'),
-    pageUpIcon = require('./src/images/toolbarButton-pageUp.png'),
+    pageDownIcon = require('./src/images/icon-next.png'),
+    pageUpIcon = require('./src/images/icon-back.png'),
     download = require('./src/images/toolbarButton-download.png'),
-    print = require('./src/images/toolbarButton-print.png')
+    print = require('./src/images/toolbarButton-print.png'),
+    close = require('./src/images/buttons---close-button.png')
 
-const { PDF } = NativeModules;
+// const { PDF } = NativeModules;
 
-
-class PDFView extends Component {
-
-
+export default class RNDocumentViewer extends Component {
     constructor(props, context) {
         super(props, context);
         this.state = {
@@ -25,12 +26,6 @@ class PDFView extends Component {
             visible: false
         };
         this.pdf = null;
-    }
-
-    componentWillMount() {
-        this.setState({
-            visible: this.props.visible
-        })
     }
 
     componentWillReceiveProps(nextProps) {
@@ -55,7 +50,6 @@ class PDFView extends Component {
             this.setState({ page: nextPage });
             console.log(`nextPage: ${nextPage}`);
         }
-
     }
 
     printDocument = (url) => {
@@ -84,19 +78,21 @@ class PDFView extends Component {
 
     render() {
         let { visible, page, pageCount } = this.state;
-        let source = { uri: 'https://www.antennahouse.com/XSLsample/pdf/sample-link_1.pdf' };
+        let {pdfSource} = this.props;
+        let source = { uri: pdfSource };
+        
         return (
-            <Modal style={{ flex: 1, backgroundColor: 'white' }} visible={visible}>
+            <View style={{ flex: 1, backgroundColor: 'white' }}>
                 <View style={styles.pdfHeaderBar}>
                     <View style={styles.leftControls}>
                         <TouchableOpacity style={styles.btn} onPress={() => this.close()}>
-                            <Icon name="ios-close" size={25} style={styles.icon} />
+                            <Image style={styles.btnClose} source={close} />
                         </TouchableOpacity>
                         <TouchableOpacity disabled={page == 1} style={styles.btn} onPress={() => this.prePage()}>
-                            <Image source={pageUpIcon} />
+                            <Image style={styles.arrowsIcon} source={pageUpIcon} />
                         </TouchableOpacity>
                         <TouchableOpacity disabled={page == pageCount} style={styles.btn} onPress={() => this.nextPage()}>
-                            <Image source={pageDownIcon} />
+                            <Image style={styles.arrowsIcon} source={pageDownIcon} />
                         </TouchableOpacity>
 
                         <View style={styles.pageDetailsBox}>
@@ -119,6 +115,8 @@ class PDFView extends Component {
                             <Text style={styles.text}> {pageCount} </Text>
                         </View>
                     </View>
+
+
                     <View style={styles.leftControls}>
                         <TouchableOpacity style={styles.btn} onPress={() => this.printDocument(source.uri)}>
                             <Image source={print} />
@@ -127,10 +125,6 @@ class PDFView extends Component {
                             <Image source={download} />
                         </TouchableOpacity>
                     </View>
-
-
-
-
                 </View>
                 <Pdf ref={(pdf) => { this.pdf = pdf; }}
                     source={source}
@@ -149,7 +143,7 @@ class PDFView extends Component {
                         console.log(error);
                     }}
                     style={styles.pdf} />
-            </Modal>
+            </View>
         )
     }
 
@@ -165,6 +159,4 @@ class PDFView extends Component {
             })
     }
 }
-}
 
-export default PDF;

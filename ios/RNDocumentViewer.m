@@ -1,7 +1,7 @@
 
-#import "RNReactNativeDocumentViewer.h"
+#import "RNDocumentViewer.h"
 
-@implementation RNReactNativeDocumentViewer
+@implementation RNDocumentViewer
 
 - (dispatch_queue_t)methodQueue
 {
