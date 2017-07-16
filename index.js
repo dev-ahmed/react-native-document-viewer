@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { View, Modal, TouchableOpacity, TextInput, Icon, Image, Text } from 'react-native'
-// import {RNPrint} from 'NativeModules';
+// import { RNPrint } from 'NativeModules';
 import RNFetchBlob from 'react-native-fetch-blob';
 import Pdf from 'react-native-pdf';
 import { styles } from './src/style';
 import { NativeModules } from 'react-native';
+import Toast from 'react-native-simple-toast';
 
-const { PDFView } = NativeModules;
+const { RNPrint } = NativeModules;
+
+console.log(RNPrint)
 
 const
     pageDownIcon = require('./src/images/icon-next.png'),
@@ -81,7 +84,7 @@ export default class RNDocumentViewer extends Component {
     downloadPdf = (url) => {
         this.downloadFile(url, (res) => {
             console.log(res.path());
-            Toast.show(`file downloaded to ${res.path()}`);
+            Toast.show(`file downloaded to ${res.path()}`, Toast.LONG);
         })
     }
 
