@@ -60,7 +60,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         marginLeft: 3,
         marginRight: 3,
-        width: 40,
+        width: 60,
         // padding: 3,
         justifyContent: 'center',
         alignItems: 'center',
@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
     },
     textInput: {
         height: 20,
-        width: 40,
+        width: 60,
         margin: 1,
         textAlign: 'center',
         color: 'black',
