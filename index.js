@@ -50,7 +50,7 @@ export default class RNDocumentViewer extends Component {
             let prePage = this.state.page > 1 ? this.state.page - 1 : 1;
             this.pdf.setNativeProps({ page: prePage });
             this.setState({ page: prePage });
-            console.log(`prePage: ${prePage}`);
+            // console.log(`prePage: ${prePage}`);
         }
     }
 
@@ -59,7 +59,7 @@ export default class RNDocumentViewer extends Component {
             let nextPage = this.state.page + 1 > this.state.pageCount ? this.state.pageCount : this.state.page + 1;
             this.pdf.setNativeProps({ page: nextPage });
             this.setState({ page: nextPage });
-            console.log(`nextPage: ${nextPage}`);
+            // console.log(`nextPage: ${nextPage}`);
         }
     }
 
@@ -76,21 +76,21 @@ export default class RNDocumentViewer extends Component {
         this.downloadFile(url, (res) => {
             RNPrint.print(res.path())
                 .then((jobName) => {
-                    console.log(`Printing ${jobName} complete!`);
+                    // console.log(`Printing ${jobName} complete!`);
                 }).catch(err => console.log(err))
         })
     }
 
     downloadPdf = (url) => {
         this.downloadFile(url, (res) => {
-            console.log(res.path());
+            // console.log(res.path());
             Toast.show(`file downloaded to ${res.path()}`, Toast.LONG);
         })
     }
 
     close = () => {
         let { context } = this.props;
-        console.log(context);
+        // console.log(context);
         context.setState({
             visible: false
         });
@@ -157,11 +157,11 @@ export default class RNDocumentViewer extends Component {
                     horizontal={false}
                     onLoadComplete={(pageCount) => {
                         this.setState({ pageCount: pageCount });
-                        console.log(`total page count: ${pageCount}`);
+                        {/*console.log(`total page count: ${pageCount}`);*/}
                     }}
                     onPageChanged={(page, pageCount) => {
                         this.setState({ page: page });
-                        console.log(`current page: ${page}`);
+                        {/*console.log(`current page: ${page}`);*/}
                     }}
                     onError={(error) => {
                         console.log(error);
