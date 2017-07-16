@@ -18,7 +18,10 @@ const
     print = require('./src/images/print.png'),
     close = require('./src/images/close.png'),
     firstPage = require('./src/images/first-page.png'),
-    lastPage = require('./src/images/last-page.png')
+    lastPage = require('./src/images/last-page.png'),
+    plus = require('./src/images/plus.png')
+// lastPage = require('./src/images/last-page.png')
+
 
 // const { PDF } = NativeModules;
 
@@ -28,7 +31,9 @@ export default class RNDocumentViewer extends Component {
         this.state = {
             page: 1,
             pageCount: 1,
-            visible: false
+            visible: false,
+            scale: 1,
+            maxScale: 2
         };
         this.pdf = null;
     }
@@ -97,8 +102,18 @@ export default class RNDocumentViewer extends Component {
 
     }
 
+    zoomIn() {
+        let scale = this.state.scale + 0.1 > this.state.maxScale ? this.state.maxScale : this.state.scale + 0.1;
+        this.setState({ scale })
+    }
+
+    zoomOut() {
+        let scale = this.state.scale > 1 ? this.state.scale - 0.1 : 1;
+        this.setState({ scale })
+    }
+
     render() {
-        let { visible, page, pageCount } = this.state;
+        let { visible, page, pageCount, scale } = this.state;
         let { pdfSource } = this.props;
         let source = { uri: pdfSource };
 
@@ -140,6 +155,20 @@ export default class RNDocumentViewer extends Component {
                         </View>
                     </View>
 
+                    <View style={styles.centerControls}>
+                        <TouchableOpacity style={styles.zoomBtns} onPress={() => this.zoomOut()}>
+                            <Text style={[styles.text, styles.zoomIcons]}>-</Text>
+                        </TouchableOpacity>
+                        <View style={[styles.btn, styles.zoomSegment]}>
+                            <Text style={[styles.text, { fontSize: 18, color: 'white' }]}>|</Text>
+                        </View>
+                        <TouchableOpacity style={[styles.zoomBtns, { marginRight: 10 }]} onPress={() => this.zoomIn()}>
+                            <Text style={[styles.text, styles.zoomIcons]}>+</Text>
+                        </TouchableOpacity>
+                        <View style={[styles.btn, { width: 80 }]}>
+                            <Text style={[styles.text, { width: 80, fontSize: 14 }]}> Zoom</Text>
+                        </View>
+                    </View>
 
                     <View style={styles.leftControls}>
                         <TouchableOpacity style={styles.btn} onPress={() => this.printDocument(source.uri)}>
@@ -153,15 +182,15 @@ export default class RNDocumentViewer extends Component {
                 <Pdf ref={(pdf) => { this.pdf = pdf; }}
                     source={source}
                     page={1}
-                    scale={1}
+                    scale={scale}
                     horizontal={false}
                     onLoadComplete={(pageCount) => {
                         this.setState({ pageCount: pageCount });
-                        {/*console.log(`total page count: ${pageCount}`);*/}
+                        {/*console.log(`total page count: ${pageCount}`);*/ }
                     }}
                     onPageChanged={(page, pageCount) => {
                         this.setState({ page: page });
-                        {/*console.log(`current page: ${page}`);*/}
+                        {/*console.log(`current page: ${page}`);*/ }
                     }}
                     onError={(error) => {
                         console.log(error);

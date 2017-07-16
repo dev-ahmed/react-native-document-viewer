@@ -3,13 +3,15 @@ import {
     Dimensions
 } from 'react-native'
 
+const { height, width } = Dimensions.get('window');
+
 export const styles = StyleSheet.create({
     pdfHeaderBar: {
         backgroundColor: 'black',
         flexDirection: 'row',
         justifyContent: 'space-between',
         marginTop: 23,
-        width: Dimensions.get('window').width
+        width
     },
     leftControls: {
         marginLeft: 5,
@@ -21,6 +23,12 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'flex-end'
     },
+    centerControls: {
+        marginLeft: - width * 0.15,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        width: 40
+    },
     btn: {
         flexDirection: 'row',
         margin: 3,
@@ -29,6 +37,17 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         // backgroundColor: "blue",
+    },
+    zoomBtns: {
+        flexDirection: 'row',
+        marginTop: 3,
+        marginBottom: 3,
+        width: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    zoomSegment: {
+        width: 8
     },
     btnDisabled: {
         flexDirection: 'row',
@@ -70,9 +89,10 @@ export const styles = StyleSheet.create({
     totalPageBox: {
         height: 20,
         width: 60,
-        backgroundColor: 'grey',
+        backgroundColor: '#172727',
         justifyContent: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        borderColor: '#9b9b9b',
     },
     textInput: {
         height: 20,
@@ -84,6 +104,11 @@ export const styles = StyleSheet.create({
     },
     text: {
         color: 'white',
+    },
+    zoomIcons: {
+        color: 'white',
+        fontSize: 18,
+        fontWeight: 'bold'
     },
     btnText: {
         color: "#FFF",
@@ -100,6 +125,6 @@ export const styles = StyleSheet.create({
     },
     pdf: {
         flex: 1,
-        width: Dimensions.get('window').width,
+        width
     }
 });
