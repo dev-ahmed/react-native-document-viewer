@@ -33,7 +33,9 @@ export default class RNDocumentViewer extends Component {
             pageCount: 1,
             visible: false,
             scale: 1,
-            maxScale: 2
+            minScale: 0.5,
+            maxScale: 2,
+            zoomRange: 0.25
         };
         this.pdf = null;
     }
@@ -103,13 +105,15 @@ export default class RNDocumentViewer extends Component {
     }
 
     zoomIn() {
-        let scale = this.state.scale + 0.1 > this.state.maxScale ? this.state.maxScale : this.state.scale + 0.1;
-        this.setState({ scale })
+        let { scale, maxScale, zoomRange } = this.state;
+        let temp = scale + zoomRange > maxScale ? maxScale : scale + zoomRange;
+        this.setState({ scale: temp })
     }
 
     zoomOut() {
-        let scale = this.state.scale > 1 ? this.state.scale - 0.1 : 1;
-        this.setState({ scale })
+        let { scale, maxScale, zoomRange, minScale } = this.state;
+        let temp = scale > minScale ? scale - zoomRange : minScale;
+        this.setState({ scale: temp })
     }
 
     render() {
