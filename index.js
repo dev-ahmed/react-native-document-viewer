@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View , Modal , TouchableOpacity , TextInput , Icon , Image , Text } from 'react-native'
+import { View, Modal, TouchableOpacity, TextInput, Icon, Image, Text } from 'react-native'
 // import {RNPrint} from 'NativeModules';
 import RNFetchBlob from 'react-native-fetch-blob';
 import Pdf from 'react-native-pdf';
@@ -11,9 +11,11 @@ const { PDFView } = NativeModules;
 const
     pageDownIcon = require('./src/images/icon-next.png'),
     pageUpIcon = require('./src/images/icon-back.png'),
-    download = require('./src/images/toolbarButton-download.png'),
-    print = require('./src/images/toolbarButton-print.png'),
-    close = require('./src/images/buttons---close-button.png')
+    download = require('./src/images/download.png'),
+    print = require('./src/images/print.png'),
+    close = require('./src/images/close.png'),
+    firstPage = require('./src/images/first-page.png'),
+    lastPage = require('./src/images/last-page.png')
 
 // const { PDF } = NativeModules;
 
@@ -58,6 +60,15 @@ export default class RNDocumentViewer extends Component {
         }
     }
 
+    goFistPage() {
+        this.setState({ page: 1 });
+    }
+
+    goLastPage() {
+        let { pageCount } = this.state;
+        this.setState({ page: pageCount });
+    }
+
     printDocument = (url) => {
         this.downloadFile(url, (res) => {
             RNPrint.print(res.path())
@@ -85,9 +96,9 @@ export default class RNDocumentViewer extends Component {
 
     render() {
         let { visible, page, pageCount } = this.state;
-        let {pdfSource} = this.props;
+        let { pdfSource } = this.props;
         let source = { uri: pdfSource };
-        
+
         return (
             <Modal style={{ flex: 1, backgroundColor: 'white' }} visible={visible}>
                 <View style={styles.pdfHeaderBar}>
@@ -95,17 +106,20 @@ export default class RNDocumentViewer extends Component {
                         <TouchableOpacity style={styles.btn} onPress={() => this.close()}>
                             <Image style={styles.btnClose} source={close} />
                         </TouchableOpacity>
+                        <TouchableOpacity disabled={page == 1} style={styles.btn} onPress={() => this.goFistPage()}>
+                            <Image style={styles.arrowsIcon} source={firstPage} />
+                        </TouchableOpacity>
                         <TouchableOpacity disabled={page == 1} style={styles.btn} onPress={() => this.prePage()}>
                             <Image style={styles.arrowsIcon} source={pageUpIcon} />
                         </TouchableOpacity>
                         <TouchableOpacity disabled={page == pageCount} style={styles.btn} onPress={() => this.nextPage()}>
                             <Image style={styles.arrowsIcon} source={pageDownIcon} />
                         </TouchableOpacity>
+                        <TouchableOpacity disabled={page == pageCount} style={styles.btn} onPress={() => this.goLastPage()}>
+                            <Image style={styles.arrowsIcon} source={lastPage} />
+                        </TouchableOpacity>
 
                         <View style={styles.pageDetailsBox}>
-                            <Text style={styles.text}>
-                                Page:
-                        </Text>
                             <View style={styles.currentPageBox}>
                                 <TextInput
                                     style={styles.textInput}
@@ -126,10 +140,10 @@ export default class RNDocumentViewer extends Component {
 
                     <View style={styles.leftControls}>
                         <TouchableOpacity style={styles.btn} onPress={() => this.printDocument(source.uri)}>
-                            <Image source={print} />
+                            <Image style={styles.rightControlIcons} source={print} />
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.btn} onPress={() => this.downloadPdf(source.uri)}>
-                            <Image source={download} />
+                            <Image style={styles.rightControlIcons} source={download} />
                         </TouchableOpacity>
                     </View>
                 </View>

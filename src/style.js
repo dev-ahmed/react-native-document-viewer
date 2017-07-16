@@ -12,10 +12,12 @@ export const styles = StyleSheet.create({
         width: Dimensions.get('window').width
     },
     leftControls: {
+        marginLeft: 5,
         flexDirection: 'row',
         justifyContent: 'flex-start'
     },
     rightControls: {
+        marginRight: 5,
         flexDirection: 'row',
         justifyContent: 'flex-end'
     },
@@ -36,14 +38,10 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         opacity: .6
     },
-    arrowsIcon:{
-        width: 17,
-        height: 15,
-    },
-    btnClose:{
-        marginLeft:3,
-        width:40,
-        height:15
+    btnClose: {
+        marginLeft: 5,
+        width: 40,
+        height: 15
     },
     icon: {
         color: 'white',
@@ -82,6 +80,16 @@ export const styles = StyleSheet.create({
     },
     btnText: {
         color: "#FFF",
+    },
+    arrowsIcon: {
+        width: 15,
+        height: 12,
+        resizeMode: 'contain'
+    },
+    rightControlIcons: {
+        width: 17,
+        height: 15,
+        resizeMode: 'contain'
     },
     pdf: {
         flex: 1,
