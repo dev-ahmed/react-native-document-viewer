@@ -65,14 +65,21 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         // borderWidth: 1,
-        backgroundColor: 'grey'
+        backgroundColor: 'white'
+    },
+    totalPageBox: {
+        height: 20,
+        width: 60,
+        backgroundColor: 'grey',
+        justifyContent: 'center',
+        flexDirection: 'row'
     },
     textInput: {
         height: 20,
         width: 40,
         margin: 1,
         textAlign: 'center',
-        color: 'white',
+        color: 'black',
         fontSize: 15
     },
     text: {

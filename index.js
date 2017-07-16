@@ -130,10 +130,10 @@ export default class RNDocumentViewer extends Component {
                                     }}
                                     value={page.toString()} />
                             </View>
-                            <Text style={styles.text}>
-                                of:
-                        </Text>
-                            <Text style={styles.text}> {pageCount} </Text>
+                            <View style={styles.totalPageBox}>
+                                <Text style={styles.text}>of:</Text>
+                                <Text style={styles.text}> {pageCount} </Text>
+                            </View>
                         </View>
                     </View>
 
