@@ -72,10 +72,12 @@ export default class RNDocumentViewer extends Component {
 
     goFistPage() {
         this.setState({ page: 1 });
+        this.pdf.setNativeProps({ page: 1 });
     }
 
     goLastPage() {
         let { pageCount } = this.state;
+        this.pdf.setNativeProps({ page: pageCount });
         this.setState({ page: pageCount });
     }
 
