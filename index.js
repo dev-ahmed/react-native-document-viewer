@@ -121,7 +121,9 @@ export default class RNDocumentViewer extends Component {
     render() {
         let { visible, page, pageCount, scale } = this.state;
         let { pdfSource } = this.props;
-        let source = { uri: pdfSource };
+        console.log(pdfSource);
+        // let source = { uri: `file://${pdfSource}`, cache: true };
+        let source = { uri: pdfSource, cache: true };
 
         return (
             <Modal style={{ flex: 1, backgroundColor: 'white' }} visible={visible}>
