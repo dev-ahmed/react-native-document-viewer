@@ -125,6 +125,7 @@ export const styles = StyleSheet.create({
     },
     pdf: {
         flex: 1,
-        width
+        width,
+        backgroundColor:"#ffffff"
     }
 });
