@@ -13,7 +13,7 @@
   "license": "",
   "peerDependencies": {
     "react-native": "^0.44.0",
-    "react-native-pdf": "^1.2.3",
+    "react-native-pdf": "latest",
     "react-native-print": "^0.3.0",
     "react-native-windows": "0.41.0-rc.1",
     "react-native-fetch-blob": "^0.10.5",
