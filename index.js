@@ -167,12 +167,15 @@ export default class RNDocumentViewer extends Component {
                         <TouchableOpacity style={styles.zoomBtns} onPress={() => this.zoomOut()}>
                             <Text style={[styles.text, styles.zoomIcons]}>-</Text>
                         </TouchableOpacity>
+
                         <View style={[styles.btn, styles.zoomSegment]}>
                             <Text style={[styles.text, { fontSize: 18, color: 'white' }]}>|</Text>
                         </View>
+
                         <TouchableOpacity style={[styles.zoomBtns, { marginRight: 10 }]} onPress={() => this.zoomIn()}>
                             <Text style={[styles.text, styles.zoomIcons]}>+</Text>
                         </TouchableOpacity>
+
                         <View style={[styles.btn, { width: 80 }]}>
                             <Text style={[styles.text, { width: 80, fontSize: 14 }]}> Zoom</Text>
                         </View>
